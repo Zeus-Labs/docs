@@ -1,0 +1,13 @@
+---
+title: "CloudTrail"
+---
+
+ZeusCloud provides the following security rules for AWS CloudTrail:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/bucket_access_logging.go">Cloudtrail trails' S3 logging buckets should have access logging enabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/bucket_not_publicly_accessible.go">S3 buckets with Cloudtrail logs should not be publicly accessible</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/delivered_to_cloudwatch.go">Cloudtrail trails should be delivered to Cloudwatch</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/enabled_all_regions.go">Each account should have Cloudtrail enabled across all regions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/log_file_validation_enabled.go">Cloudtrail trails should have log file validation enabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/log_s3_object_read_events.go">S3 bucket object-level read events logging should be enabled in Cloudtrail</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/log_s3_object_write_events.go">S3 bucket object-level write events logging should be enabled in Cloudtrail</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/cloudtrail/trails_at_rest_encrypted.go">Cloudtrail trails should have at rest encryption enabled</a>

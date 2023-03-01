@@ -1,0 +1,44 @@
+---
+title: "Get Started"
+---
+
+## Deploy
+
+Deploy ZeusCloud locally or on a VM not exposed to the internet.
+
+#### 1. Clone the repo.
+```bash Bash
+git clone --recurse-submodules git@github.com:Zeus-Labs/ZeusCloud.git
+```
+#### 2. Generate an encryption key.
+```bash Bash
+openssl rand -base64 32
+```
+#### 3. Run the containers.
+```bash Bash
+ENCRYPTION_KEY=[from previous step] docker-compose up
+```
+#### 4. Visit UI
+Visit http://localhost:3000.
+
+
+## Connect and Scan
+
+#### 1. Connect your AWS accounts. 
+Navigate to `Settings > Add new account`. You will be asked to fill in credentials for the AWS account you would like to scan.
+
+To do so, create a new IAM user in the account. Attach the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor">Security Audit</a> policy to the user. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Create an access key</a> for the user.
+
+Fill in the `Account Name` with whatever identifier you would like. Fill in the `AWS Access Key ID` and `AWS Secret Access Key` you just created. Optionally, change the default region.
+
+We will soon be adding additional ways for ZeusCloud to connect to your AWS account (e.g. through IAM roles).
+
+#### 2. Wait for ZeusCloud to scan. 
+
+Once you connect your account(s), ZeusCloud will scan them and run various security rules. The `Scan Status` should read `In Progress` for your added account. This process may take 10-15 minutes. Reference the docker compose logs to check if progress is being made.
+
+## Explore ZeusCloud findings
+
+At the end of the scan, ZeusCloud rules will be run. Check out the `Rules` tab for a catalog of the security rules. Navigate to the `Alerts` tab to see findings for misconfiguration and attack path rules. Check your compliance posture for various frameworks in the `Compliance` tab.
+
+

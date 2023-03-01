@@ -1,0 +1,46 @@
+---
+title: "Development Guide"
+description: "Follow the steps below to set up ZeusCloud in development mode."
+---
+
+## Requirements
+
+1. `node` version `18.13`
+2. `docker` and `docker-compose`
+
+## Setup Instructions
+
+Run containers in development mode:
+```bash Bash
+cd frontend && yarn && cd -
+docker-compose down && docker-compose -f docker-compose.dev.yaml --env-file .env.dev up --build
+```
+
+## Data Reset
+
+The neo4j instance stores data pulled from the cloud environments. The postgres instance stores information like account connection settings and security rule results. Reset neo4j and/or postgres data with the following:
+```bash Bash
+rm -rf .compose/neo4j
+rm -rf .compose/postgres
+```
+
+## Frontend Development
+
+Make the the code changes in the `frontend/` directory and save. The frontend will automatically reload!
+
+## Backend Development
+
+Make the the code changes in the `backend/` directory. Then, restart the backend container:
+```bash Bash
+docker-compose -f docker-compose.dev.yaml --env-file .env.dev up --no-deps --build backend
+```
+
+## Cartography Development
+
+ZeusCloud uses Lyft's cartography as an asset inventory. To make changes, update the `cartography/` diredctory and restart the cartography server:
+```bash Bash
+docker-compose -f docker-compose.dev.yaml --env-file .env.dev up --no-deps --build cartography
+```
+
+
+

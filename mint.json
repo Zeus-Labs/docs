@@ -1,65 +1,93 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Zeus Cloud",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0069ED",
-    "light": "#4D9CFF",
-    "dark": "#0050B4"
+    "primary": "#6129D9",
+    "light": "#8B61FF",
+    "dark": "#221177",
+    "anchors": { "from": "#8B61FF", "to": "#221177" }
   },
-  "topbarLinks": [
-    {
-      "name": "Documentation",
-      "url": "https://mintlify.com/docs"
-    }
-  ],
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://github.com/mintlify/starter"
+    "name": "Explore Demo",
+    "url": "https://github.com/Zeus-Labs/ZeusCloud"
   },
   "anchors": [
     {
-      "name": "API Reference",
-      "icon": "rectangle-terminal",
-      "url": "api-reference"
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/Zeus-Labs/ZeusCloud"
     },
     {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
+      "name": "Demo",
+      "icon": "play",
+      "url": "https://github.com/Zeus-Labs/ZeusCloud"
     },
     {
       "name": "Community",
       "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "url": "https://github.com/Zeus-Labs/ZeusCloud"
+    },
+    {
+      "name": "Contact Us",
+      "icon": "envelope",
+      "url": "mailto:founders@zeuscloud.io"
     }
   ],
   "navigation": [
     {
-      "group": "Home",
-      "pages": ["introduction", "features"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
+      "group": "Introduction",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "introduction/welcome",
+        "introduction/getstarted",
+        "introduction/rules",
+        "introduction/alerts",
+        "introduction/compliance",
+        "introduction/customize"
+      ]
+    },
+    {
+      "group": "Rules Catalog",
+      "pages": [
+        "rules-catalog/overview",
+        {
+          "group": "Misconfigurations",
+          "pages": [
+            "rules-catalog/misconfigurations/cloudtrail",
+            "rules-catalog/misconfigurations/cloudwatch",
+            "rules-catalog/misconfigurations/ec2",
+            "rules-catalog/misconfigurations/elasticsearch",
+            "rules-catalog/misconfigurations/elbv2",
+            "rules-catalog/misconfigurations/iam",
+            "rules-catalog/misconfigurations/kms",
+            "rules-catalog/misconfigurations/rds",
+            "rules-catalog/misconfigurations/s3",
+            "rules-catalog/misconfigurations/secretsmanager",
+            "rules-catalog/misconfigurations/securityhub",
+            "rules-catalog/misconfigurations/sqs",
+            "rules-catalog/misconfigurations/vpc"
+          ]
+        },
+        "rules-catalog/attackpaths"
+      ]
+    },
+    {
+      "group": "Contribute",
+      "pages": [
+        "contribute/overview",
+        "contribute/development",
+        "contribute/addsecurityrule",
+        "contribute/addtoassetinventory"
       ]
     }
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
+    "github": "https://github.com/Zeus-Labs/ZeusCloud",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
   }
 }

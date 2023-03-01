@@ -1,0 +1,11 @@
+---
+title: "VPC"
+---
+
+ZeusCloud provides the following security rules for AWS VPC:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/block_public_server_admin_ingress_ipv4.go">Security groups should not allow ingress to 0.0.0.0/0 on ports 22 and 3389</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/default_security_groups_block_traffic.go">Default security groups should block all inbound and outbound traffic</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/enable_flow_logs.go">Flow logs for VPC should be enabled and active</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/excessive_security_groups.go">The number of security groups within a region should be be minimized for easier management</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/no_classic_instances.go">EC2 Classic should not be used and should be replaced by VPC</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/vpc/unused_security_groups.go">Non-default security groups that are unused should be removed</a>

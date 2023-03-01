@@ -1,0 +1,12 @@
+---
+title: "EC2"
+---
+
+ZeusCloud provides the following security rules for AWS EC2:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/avoid_public_ips.go">EC2 instances shouldn't have public IPs to prevent public exposure</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/detailed_monitoring_enabled.go">Detailed monitoring should be enabled for EC2 instances</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/ebs_at_rest_encrypted.go">EBS volumes should be encrypted at rest</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/ebs_optimized_enabled.go">EBS optimization should be enabled for those EC2 instances that allow it</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/ebs_snapshot_encrypted.go">EBS snapshots should be encrypted at rest</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/no_public_amis.go">EC2 AMIs owned by you should not be set to public</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/ec2/unused_eip_addresses.go">Elastic IP addresses should be removed if they are unused</a>

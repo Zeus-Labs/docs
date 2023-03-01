@@ -1,0 +1,13 @@
+---
+title: "S3"
+---
+
+ZeusCloud provides the following security rules for AWS S3:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/access_logging_enabled.go">S3 buckets should have server access logging enabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/block_public_access_config.go">Buckets should be configured with block public access settings</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/buckets_versioned.go">S3 buckets should have versioning enabled to help recover from data loss</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/enable_server_side_encryption.go">S3 buckets should have at-rest server side encryption enabled by default</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/enforce_in_transit_encryption.go">S3 buckets should deny HTTP requests</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/mfa_delete.go">S3 buckets should have MFA delete enabled in the bucket versioning configuration</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/restrict_publicly_readable.go">S3 buckets should not be publicly readable</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/s3/restrict_publicly_writable.go">S3 buckets should not be publicly writable</a>

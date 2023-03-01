@@ -1,0 +1,26 @@
+---
+title: "IAM"
+---
+
+ZeusCloud provides the following security rules for AWS IAM:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/access_keys_rotated_90_days.go">User access keys should be rotated every 90 days or less</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/avoid_access_keys_at_setup.go">Access keys should not be set up at initial user setup for IAM users with passwords</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/credentials_unused_90_days.go">IAM credentials (access keys and passwords) unused for 90 days or more should be disabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/expired_server_certificates.go">Expired SSL/TLS certificates stored in AWS IAM should be removed</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/mfa_enabled_for_console_access.go">MFA should be enabled for all IAM users with a console password</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/no_inline_policies.go">IAM groups, users, and roles should not have any inline policies</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/no_root_access_keys.go">No root account access keys should exist</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/no_star_policies.go">Full '*' administrative privileges shouldn't be allowed through IAM policies</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/no_user_policies.go">IAM policies should not be connected to IAM users, but rather groups and roles</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_expiry.go">Password policy should expire passwords within 90 days or less</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_lowercase_required.go">Password policy should require at least one lowercase character</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_min_length.go">Password policy should require a minimum length of at least 14</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_numbers_required.go">Password policy should require at least one number character</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_reuse_prevention.go">Password policy should prevent password reuse: 24 or greater</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_symbols_required.go">Password policy should require at least one symbol character</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/password_uppercase_required.go">Password policy should require at least one uppercase character</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/root_account_used.go">Root Account should not be actively used</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/root_mfa_enabled.go">MFA should be enabled for the root account</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/support_policy.go">An IAM user, group, or role has specific permissions to coordinate AWS support</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/user_active_access_keys.go">IAM users should each only have at most one active access key</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/user_attached_to_group.go">IAM user should be associated with at least 1 group</a>

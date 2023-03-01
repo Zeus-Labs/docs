@@ -1,0 +1,9 @@
+---
+title: "RDS"
+---
+
+ZeusCloud provides the following security rules for AWS RDS:
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/rds/instance_at_rest_encrypted.go">RDS instances should have at rest encryption enabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/rds/instance_auto_minor_version_upgrade.go">RDS instances should have minor version upgrades automatically applied during maintenance</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/rds/instance_iam_authentication_enabled.go">RDS instances should have IAM authentication enabled</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/rds/instance_not_publicly_accessible.go">RDS instances should not be publicly accessible</a>
