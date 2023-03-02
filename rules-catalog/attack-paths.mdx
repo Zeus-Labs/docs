@@ -1,0 +1,23 @@
+---
+title: "Attack Paths"
+---
+
+Attack paths are toxic combinations of risks in your environment. By chaining these risks together, an attacker may execute an exploit.
+
+Some components of an attack path may include 
+- <b>Publicly facing assets</b>: an attacker may get initial access to your environment through publicly exposed VMs, containers, or serverless functions.
+- <b>3rd party identities</b>: Adversaries may attack external 3rd party entities to whom you have given privileges in your account.
+- <b>Admin or high privileged principals</b>: A takeover of these IAM principals may lead to data access or account takeover.
+- <b>Privilege escalations</b>: Certain combinations of privileges (e.g. `iam:PassRole` and `ec2:RunInstances`) may allow an attacker to subtly escalate their priveleges within your account. More details about privilege escalations can be found <a href="https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/">here</a>.
+
+ZeusCloud attack paths include
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedVmAdmin.go">Publicly exposed VM instance with effective admin permissions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedVmHigh.go">Publicly exposed VM instance with effective high permissions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedVmPrivEsc.go">Publicly exposed VM instance with potential privilege escalations</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedServerlessAdmin.go">Publicly exposed serverless function with effective admin permissions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedServerlessHigh.go">Publicly exposed serverless function with high permissions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PubliclyExposedServerlessPrivEsc.go">Publicly exposed serverless function with potential privilege escalations</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/PrivateServerlessAdmin.go">Private serverless function with effective admin permissions</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/ThirdPartyAdmin.go">A 3rd party identity has admin permissions in the account</a>
+- <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/attackpath/ThirdPartyHigh.go">A 3rd party identity has high permissions in the account</a>
+

@@ -43,7 +43,7 @@
       "group": "Introduction",
       "pages": [
         "introduction/welcome",
-        "introduction/getstarted",
+        "introduction/get-started",
         "introduction/rules",
         "introduction/alerts",
         "introduction/compliance",
@@ -72,7 +72,7 @@
             "rules-catalog/misconfigurations/vpc"
           ]
         },
-        "rules-catalog/attackpaths"
+        "rules-catalog/attack-paths"
       ]
     },
     {
@@ -80,14 +80,15 @@
       "pages": [
         "contribute/overview",
         "contribute/development",
-        "contribute/addsecurityrule",
-        "contribute/addtoassetinventory"
+        "contribute/add-security-rule",
+        "contribute/add-to-asset-inventory",
+        "contribute/add-compliance-framework"
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
+    "twitter": "https://twitter.com/GetZeusCloud",
     "github": "https://github.com/Zeus-Labs/ZeusCloud",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/zeus-cloud"
   }
 }

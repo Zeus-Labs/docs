@@ -1,0 +1,15 @@
+---
+title: "Add a Security Rule"
+description: "Guide to add a custom security rule"
+---
+
+Here are the steps to add your own custom security rule:
+
+1. Create a file under `backend/rules` like <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/iam/no_root_access_keys.go">this one</a>.
+    - Specify a `UID` like `iam/no_root_access_keys`. This is made from a service (e.g. `iam`) and a rule name (e.g. `no_root_access_keys`).
+    - Specify a short `Description` for the rule.
+    - Choose a `Severity` level from `Low`, `Moderate`, `High`, and `Critical`.
+    - List out `RiskCategories` that describe the rule. Choose from `Insufficient Monitoring`, `Publicly Exposed`, `Poor Encryption`, `IAM Misconfiguration`, `Patching Issue`, `Unused Resource`, `Data Access`, and `Poor Backup`.
+    - Fill out rule execution logic under `Execute`. This is a Cypher query that returns a `resource_id`, `resource_type`, `account_id`, `status`, and `context`.
+2. Add your rule to `MisconfigurationRulesToExecute` or `AttackPathsRulesToExecute` <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/rules/rules.go">here</a>
+3. Optionally add remediation steps like <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/frontend/src/Components/Remediation/IamMisconfigurationComponents/RootAccountAccessKeys.tsx">here</a>. 

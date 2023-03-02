@@ -1,0 +1,9 @@
+---
+title: "Add a Compliance Framework"
+description: "Guide to adding a new compliance framework"
+---
+
+To add new compliance frameworks to ZeusCloud, you must 
+- Add a `ComplianceFrameworkSpec` object. An example for PCI DSS is shown <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/backend/compliance/pci_dss_3_2_1.go">here</a>.
+- Update the `FrameworkIDToSpec` mapping <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/ec5b625dea1ed29f735655126f424e4022a500fe/backend/compliance/compliance.go#L21">here</a>.
+- Update the `ComplianceCardList` on the frontend <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/e0e969ba53b486c80de80ba22587111d3d495a8d/frontend/src/Pages/Compliance.tsx#L15">here</a>.
