@@ -2,7 +2,7 @@
 title: "Get Started"
 ---
 
-## Deploy
+## Local Deploy
 
 Deploy ZeusCloud locally or on a VM not exposed to the internet.
 
@@ -10,15 +10,12 @@ Deploy ZeusCloud locally or on a VM not exposed to the internet.
 ```bash Bash
 git clone --recurse-submodules git@github.com:Zeus-Labs/ZeusCloud.git
 ```
-#### 2. Generate an encryption key.
+#### 2. Run ZeusCloud.
 ```bash Bash
-openssl rand -base64 32
+cd ZeusCloud
+make quick-deploy
 ```
-#### 3. Run the containers.
-```bash Bash
-ENCRYPTION_KEY=[from previous step] docker-compose up
-```
-#### 4. Visit UI
+#### 3. Visit UI
 Visit http://localhost:3000.
 
 
