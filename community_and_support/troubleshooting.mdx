@@ -1,0 +1,32 @@
+---
+title: "Troubleshooting"
+description: "Common technical issues and quick debug solutions"
+---
+<Accordion title="The `git clone` command is not working.">
+Try to git clone with both SSH and HTTPS formats. Here are the two commands to try:
+```bash Bash
+git clone --recurse-submodules https://github.com/Zeus-Labs/ZeusCloud.git
+```
+```bash Bash
+git clone --recurse-submodules git@github.com:Zeus-Labs/ZeusCloud.git
+```
+</Accordion>
+<Accordion title="Error when deploying: `docker.errors.DockerException`">
+  Docker may not be running on your system, and you may need to restart it.
+</Accordion>
+<Accordion title="Error when deploying: `Cannot start service proxy: Ports are not available`">
+  Make sure port 80 is not occupied by other projects / containers / etc.
+</Accordion>
+<Accordion title="Error when deploying: `Invalid memory configuration - exceeds physical memory`">
+  If deploying ZeusCloud doesn't work, you may find a neo4j container log stating `Invalid memory configuration - exceeds physical memory`.
+
+  This happens if ZeusCloud requires more memory than available on Docker Desktop. Some fixes include
+  - Increase the memory allocated to Docker Desktop. The default is usally 2 GB. Here's some <a href="https://docs.docker.com/desktop/settings/mac/">documentation</a> on increasing memory allocated.
+  - Reduce the memory used by ZeusCloud. In the <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/docker-compose.yaml">`docker-compose.yaml` file</a>, reduce the values of `NEO4J_dbms_memory_pagecache_size`, `NEO4J_dbms.memory.heap.initial_size`, and `NEO4J_dbms_memory_heap_max__size`. The default values are `250m`.
+  - Delete existing containers, images, and volumes to make room for ZeusCloud.
+</Accordion>
+
+
+## Other issues?
+Ask us on [Slack](https://join.slack.com/t/ironleapcommunity/shared_invite/zt-1oxm8asmq-4oyM4fdqarSHMoMstGH6Lw), we are very responsive!
+

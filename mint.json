@@ -84,6 +84,13 @@
         "contribute/add-to-asset-inventory",
         "contribute/add-compliance-framework"
       ]
+    },
+    {
+      "group": "Community and Support",
+      "pages": [
+        "community_and_support/troubleshooting",
+        "community_and_support/community"
+      ]
     }
   ],
   "footerSocials": {
