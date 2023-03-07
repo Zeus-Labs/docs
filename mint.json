@@ -14,7 +14,7 @@
   },
   "topbarCtaButton": {
     "name": "Explore Demo",
-    "url": "https://github.com/Zeus-Labs/ZeusCloud"
+    "url": "https://demo.zeuscloud.io"
   },
   "anchors": [
     {
@@ -25,7 +25,7 @@
     {
       "name": "Demo",
       "icon": "play",
-      "url": "https://github.com/Zeus-Labs/ZeusCloud"
+      "url": "https://demo.zeuscloud.io"
     },
     {
       "name": "Community",
