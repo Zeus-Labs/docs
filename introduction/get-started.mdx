@@ -2,10 +2,78 @@
 title: "Get Started"
 ---
 
-Deploy ZeusCloud locally and scan your AWS environment! If you run into any issues, check out our <a href="../community_and_support/troubleshooting">Troubleshooting</a> guide.
+Deploy ZeusCloud locally and scan your AWS account(s)! If you run into any issues, check out our <a href="../community_and_support/troubleshooting">Troubleshooting</a> guide.
+
+<h2>Prepare AWS Credentials</h2>
+
+Your ZeusCloud deployment will need AWS credentials to scan your account(s). Either set up an IAM role for ZeusCloud or set up an IAM user with an access key. The former uses short-term credentials, which is more secure! However, it can take a bit more time to setup. 
+
+<Accordion title="Option 1: IAM role (more secure)">
+
+<Note>
+
+<b>Prerequisite:</b> An existing named profile in `~/.aws/config`. ZeusCloud will request credentials for the IAM role via this named profile. 
+
+If you have no such named profile, either
+- Create an IAM user with no permissions, create an access key for it, and <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html">create a named profile</a> in `~/.aws/config` and `~/.aws/credentials`.
+- Try Option 2 below instead.
+
+</Note>
+
+<div style={{position: 'relative', paddingBottom: '64.63195691202873%', height: 0}}><iframe src="https://www.loom.com/embed/c0d4ec8aced64362a685b05dc865108e" frameBorder={0} webkitallowfullscreen mozallowfullscreen allowFullScreen style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} /></div>
+
+The steps to set up the IAM role are
+1. Create a new IAM role in the account.
+2. Attach the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor">SecurityAudit</a> policy to it.
+3. Create a trust relationship policy allowing the user/role associated with the above named profile to assume this role. Here's a template:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": <INSERT_USER_ARN_ASSOCIATED_WITH_NAMED_PROFILE>
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+4. Create a named profile in `~/.aws/config` for this new IAM role. Here's a template:
+```
+[profile zeuscloud]
+region=us-west-2
+role_arn=<INSERT_NEWLY_CREATED_ROLE_ARN>
+source_profile=<INSERT_NAMED_PROFILE_THAT_ASSUMES_ROLE>
+```
+
+<Note>You must set a region in this named profile for ZeusCloud to successfully scan!</Note>
+
+</Accordion>
+<Accordion title="Option 2: IAM user + access key (faster)">
+
+<div style={{position: 'relative', paddingBottom: '64.63195691202873%', height: 0}}><iframe src="https://www.loom.com/embed/679c67bf656c4fa785e44b6dc8d82e55" frameBorder={0} webkitallowfullscreen mozallowfullscreen allowFullScreen style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} /></div>
+
+The steps to set up the IAM user and access key are
+
+1. Create a new IAM user in the account.
+
+2. Attach the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor">SecurityAudit</a> policy to the user.
+
+3. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Create an access key</a> for the user.
+
+<Warning>
+
+Access keys are long-term credentials. Be sure to delete the user / access key once they are no longer needed!
+
+</Warning>
+
+</Accordion>
 
 
-<h2>Local Deploy</h2>
+<h2>Deploy ZeusCloud Locally</h2>
 
 #### 1. Clone the repo.
 ```bash Bash
@@ -16,34 +84,53 @@ git clone --recurse-submodules https://github.com/Zeus-Labs/ZeusCloud.git
 cd ZeusCloud
 make quick-deploy
 ```
+
+<Note>
+
+If you are deploying with Option 1, ZeusCloud expects your AWS configurations in `~/.aws/config` and `~/.aws/credentials`. If your configurations are in a different location, update the `AWS_CONFIG_FILE` and `AWS_SHARED_CREDENTIALS_FILE` variables in the `.env` file.
+
+</Note>
+
 #### 3. Visit UI
 Visit http://localhost:80.
 
 
-<h2>Connect and Scan</h2>
+<h2>Connect ZeusCloud to AWS</h2>
 
-#### 1. Connect your AWS accounts. 
+Once ZeusCloud is deployed, you must connect it to the AWS account(s) you would like to scan. Navigate to `Settings > Add new account`. Fill in the `Account Name` with whatever string-identifier you would like. Fill in remaining fields based on whether you are deploying with Option 1 or 2.
 
-<div style={{position: 'relative', paddingBottom: '64.63195691202873%', height: 0}}><iframe src="https://www.loom.com/embed/679c67bf656c4fa785e44b6dc8d82e55" frameBorder={0} webkitallowfullscreen mozallowfullscreen allowFullScreen style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} /></div>
+<Accordion title="Option 1: IAM role">
 
-Navigate to `Settings > Add new account`. You will be asked to fill in credentials for the AWS account you would like to scan.
+1. Select `Named Profile` for `Connection Method`.
+2. In the `Profile` dropdown, select the named profile you created earlier.
 
-To do so, create a new IAM user in the account. Attach the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor">SecurityAudit</a> policy to the user. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Create an access key</a> for the user.
+</Accordion>
 
-Fill in the `Account Name` with whatever identifier you would like. Fill in the `AWS Access Key ID` and `AWS Secret Access Key` you just created. Optionally, change the default region.
+<Accordion title="Option 2: IAM user + access key">
 
-We will soon be adding additional ways for ZeusCloud to connect to your AWS account (e.g. through IAM roles).
+1. Select `User Access Key` for `Connection Method`.
+2. Fill in the `AWS Access Key ID` and `AWS Secret Access Key` with the access key credentials you just created.
+3. Optionally, change the default region.
 
-#### 2. Wait for ZeusCloud to scan. 
+</Accordion>
 
-Once you connect your account(s), ZeusCloud will scan them and run various security rules. The `Scan Status` should read `In Progress` for your added account. This process may take 10-15 minutes. Monitor progress through terminal logs.
+
+<h2>Wait for Scan </h2>
+
+Once you connect your account(s), ZeusCloud will scan them and run various security rules. 
+
+This process may take 10-15 minutes. 
+- Monitor progress through the UI: the `Settings` page should show a percentage completed.
+- Monitor the terminal as well: you should see logs from the `cartography` container.
 
 <img width="1688" alt="Screen Shot 2023-03-07 at 12 32 53 AM" src="https://user-images.githubusercontent.com/20483346/223367543-59e765c7-3427-4ced-87d7-384aa8bc5d72.png"/>
 
 You should see `backend` container logs like above if the scan has successfully completed.
 
-## Explore ZeusCloud findings
+<h2> Explore ZeusCloud Findings </h2>
 
-At the end of the scan, ZeusCloud rules will be run. Check out the `Rules` tab for a catalog of the security rules. Navigate to the `Alerts` tab to see findings for misconfiguration and attack path rules. Check your compliance posture for various frameworks in the `Compliance` tab.
+At the end of the scan, navigate to the `Alerts` tab to see findings for misconfiguration and attack path security rules. 
+
+Check out the `Rules` tab for a catalog of the security rules that were run. Check your compliance posture for various frameworks in the `Compliance` tab.
 
 
