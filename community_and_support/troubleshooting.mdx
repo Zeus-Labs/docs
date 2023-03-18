@@ -25,6 +25,20 @@ git clone --recurse-submodules git@github.com:Zeus-Labs/ZeusCloud.git
   - Reduce the memory used by ZeusCloud. In the <a href="https://github.com/Zeus-Labs/ZeusCloud/blob/main/docker-compose.yaml">`docker-compose.yaml` file</a>, reduce the values of `NEO4J_dbms_memory_pagecache_size`, `NEO4J_dbms.memory.heap.initial_size`, and `NEO4J_dbms_memory_heap_max__size`. The default values are `250m`.
   - Delete existing containers, images, and volumes to make room for ZeusCloud.
 </Accordion>
+<Accordion title="Error when deploying: `botocore.exceptions.NoRegionError`">
+  If the ZeusCloud scan doesn't complete, you may find a `botocore.exceptions.NoRegionError` in the logs for the cartography container.
+
+  This may be because you have not assigned a region to the named profile that ZeusCloud is using to connect to your AWS environment. Edit the `AWS_CONFIG_FILE` (default is `~/.aws/config`) to specify a region for the named profile.
+</Accordion>
+<Accordion title="I'd like to restart ZeusCloud from scratch.">
+If your deployment of ZeusCloud reaches an irreversibly screwed up state, you may want to start over from scratch. Delete any persistent data with a `make clean` and then redeploy.
+```bash Bash
+make clean
+make quick-deploy
+```
+
+</Accordion>
+
 
 
 ## Other issues?
