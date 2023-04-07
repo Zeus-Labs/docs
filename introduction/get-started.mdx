@@ -87,6 +87,12 @@ make quick-deploy
 
 <Note>
 
+If you are not deploying locally (on an AWS VM, for instance), you will need to change the `WEBSITE_DOMAIN` and `REACT_APP_API_DOMAIN` environment variables in the `.env` file before deploying. Examples are `http://<your-vm-ip>:80` or `https://<your-deployed-domain>:443`.
+
+</Note>
+
+<Note>
+
 If you are deploying with Option 1, ZeusCloud expects your AWS configurations in `~/.aws`. If your configurations are in a different location, update the `AWS_DIRECTORY` variable in the `.env` file. For Windows, change to `%USERPROFILE%\.aws`.
 
 </Note>
