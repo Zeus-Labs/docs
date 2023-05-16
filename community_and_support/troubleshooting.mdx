@@ -33,6 +33,9 @@ git clone --recurse-submodules git@github.com:Zeus-Labs/ZeusCloud.git
 
   This may be because you have not assigned a region to the named profile that ZeusCloud is using to connect to your AWS environment. Edit the `AWS_CONFIG_FILE` (default is `~/.aws/config`) to specify a region for the named profile.
 </Accordion>
+<Accordion title="No rules or alerts on the webpage">
+  If you are not deploying locally (on an AWS VM, for instance), you will need to change the `WEBSITE_DOMAIN` and `REACT_APP_API_DOMAIN` environment variables in the `.env` file before deploying. Examples are `http://<your-vm-ip>:80` or `https://<your-deployed-domain>:443`.
+</Accordion>
 <Accordion title="I'd like to restart ZeusCloud from scratch.">
 If your deployment of ZeusCloud reaches an irreversibly screwed up state, you may want to start over from scratch. Delete any persistent data with a `make clean` and then redeploy.
 ```bash Bash
