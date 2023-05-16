@@ -16,6 +16,12 @@ cd frontend && yarn && cd -
 docker-compose down && docker-compose -f docker-compose.dev.yaml --env-file .env.dev up --build
 ```
 
+<Note>
+
+If you are not deploying locally (on an AWS VM, for instance), you will need to change the `WEBSITE_DOMAIN` and `REACT_APP_API_DOMAIN` environment variables in the `.env.dev` file before deploying. Examples are `http://<your-vm-ip>:80` or `https://<your-deployed-domain>:443`.
+
+</Note>
+
 ## Data Reset
 
 The neo4j instance stores data pulled from the cloud environments. The postgres instance stores information like account connection settings and security rule results. Reset neo4j and/or postgres data with the following:
